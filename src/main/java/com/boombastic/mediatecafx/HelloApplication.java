@@ -1,5 +1,10 @@
 package com.boombastic.mediatecafx;
 
+import com.boombastic.mediatecafx.entity.Usuario;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +23,31 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction  = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            Usuario usuario = new Usuario();
+            usuario.setId(1);
+            usuario.setNombre("Jimmy");
+            usuario.setApellido("Space");
+            usuario.setTipoUsuario("Administrador");
+            usuario.setContraseña("Pepe");
+            entityManager.persist(usuario);
+
+            entityTransaction.commit();
+        } finally {
+            if (entityTransaction.isActive()) {
+                entityTransaction.rollback();
+            }
+
+            entityManager.close();
+            entityManagerFactory.close();
+        }
         launch();
     }
 }
