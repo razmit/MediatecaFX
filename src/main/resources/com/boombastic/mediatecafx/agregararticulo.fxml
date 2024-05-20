@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boombastic.mediatecafx.Busqueda">
+   <children>
+      <Pane layoutY="-6.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="237.0" layoutY="345.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="171.0" text="Solicitar prestamo" />
+            <Label alignment="CENTER" layoutX="86.0" layoutY="31.0" prefHeight="48.0" prefWidth="80.0" text="Alumno" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Button layoutX="465.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="Salir" />
+            <Button layoutX="510.0" layoutY="18.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="62.0" text="Regresar" />
+            <Label alignment="CENTER" layoutX="165.0" layoutY="88.0" prefHeight="20.0" prefWidth="270.0" text="Nombre del artículo" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField layoutX="244.0" layoutY="150.0" prefHeight="27.0" prefWidth="241.0" />
+            <Label layoutX="83.0" layoutY="154.0" prefHeight="20.0" prefWidth="132.0" text="Nombre del artículo">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="191.0" text="Tipo de material">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label layoutX="82.0" layoutY="241.0" text="Unidades">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="286.0" text="Ubicacion">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="244.0" layoutY="189.0" prefHeight="25.0" prefWidth="241.0" />
+            <TextField layoutX="244.0" layoutY="239.0" prefHeight="25.0" prefWidth="241.0" />
+            <TextField layoutX="244.0" layoutY="283.0" prefHeight="25.0" prefWidth="241.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
