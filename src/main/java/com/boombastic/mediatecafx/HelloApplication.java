@@ -36,7 +36,7 @@ public class HelloApplication extends Application {
             usuario.setNombre("Jimmy");
             usuario.setApellido("Space");
             usuario.setTipoUsuario("Administrador");
-            usuario.setContraseña("Pepe");
+            usuario.setContrasena("Pepe");
             entityManager.persist(usuario);
 
             entityTransaction.commit();
