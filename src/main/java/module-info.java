@@ -14,4 +14,6 @@ module com.boombastic.mediatecafx {
     opens com.boombastic.mediatecafx.entity to org.hibernate.orm.core;
 
     exports com.boombastic.mediatecafx;
+    exports com.boombastic.mediatecafx.controllers;
+    opens com.boombastic.mediatecafx.controllers to javafx.fxml;
 }

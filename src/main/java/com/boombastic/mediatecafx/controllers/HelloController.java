@@ -1,4 +1,4 @@
-package com.boombastic.mediatecafx;
+package com.boombastic.mediatecafx.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
