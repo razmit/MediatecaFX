@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boombastic.mediatecafx.Busqueda">
+   <children>
+      <Pane layoutY="-6.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="236.0" layoutY="346.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Buscar" />
+            <TableView layoutX="58.0" layoutY="230.0" prefHeight="95.0" prefWidth="483.0">
+              <columns>
+                <TableColumn prefWidth="110.39999008178711" text="Descripción" />
+                <TableColumn prefWidth="127.59999084472656" text="Unidades existentes" />
+                  <TableColumn prefWidth="116.4000244140625" text="Unidades en uso" />
+                  <TableColumn prefWidth="130.199951171875" text="Ubicación" />
+              </columns>
+            </TableView>
+            <Label alignment="CENTER" layoutX="86.0" layoutY="31.0" prefHeight="48.0" prefWidth="80.0" text="Alumno" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <TextField alignment="CENTER" layoutX="138.0" layoutY="112.0" prefHeight="25.0" prefWidth="308.0" text="Ingrese el nombre del artículo" />
+            <SplitMenuButton layoutX="203.0" layoutY="168.0" mnemonicParsing="false" text="Selecciona una opción">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </SplitMenuButton>
+            <Button layoutX="465.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="Salir" />
+            <Button layoutX="510.0" layoutY="18.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="62.0" text="Regresar" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
