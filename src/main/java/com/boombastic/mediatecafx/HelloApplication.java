@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class HelloApplication extends Application {
     @Override
@@ -26,18 +27,23 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
 
         Usuario usuario = new Usuario();
-        usuario.setId(2);  // Ingresen una ID random mayor a 2
-        usuario.setNombre("Bob");
-        usuario.setApellido("Bobby");
-        usuario.setContrasena("Maafaka");
-        usuario.setTipoUsuario("Alumno");
-        usuario.setTiempoMora(0);
+        usuario.setNombre("Jimmy");
+        usuario.setApellido("Lol");
+        usuario.setContrasena("OhYe");
+        usuario.setTipoUsuario("Docente");
+        usuario.setTiempoMora(2);
         usuario.setCodigoUsuario("AM2002as");
         usuario.setCantidadMora(0);
 
         UsuarioRepository repository = new UsuarioRepository();
         repository.addUser(usuario);
         System.out.println(usuario.toString());
+
+        List<String> results = repository.findAllUsers();
+        System.out.println("Results: "+results.toString());
+
+        Usuario tipoUsuario = repository.getUserTypeById(1);
+        System.out.println("Tipo usuario: "+tipoUsuario.getTipoUsuario().toString());
         launch();
     }
 }

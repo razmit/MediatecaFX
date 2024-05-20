@@ -3,7 +3,9 @@ package com.boombastic.mediatecafx.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "libro")
+@Table(name = "libro", indexes = {
+        @Index(name = "ID_Documento", columnList = "idDocumento")
+})
 public class Libro {
     @Id
     @Column(name = "idLibro", nullable = false)

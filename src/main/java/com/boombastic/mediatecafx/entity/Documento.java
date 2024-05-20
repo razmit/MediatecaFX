@@ -6,9 +6,12 @@ import org.hibernate.annotations.ColumnDefault;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "documentos")
+@Table(name = "documentos", indexes = {
+        @Index(name = "ID_Tipo_Documento", columnList = "idTipoDocumento")
+})
 public class Documento {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idDocumento", nullable = false)
     private Integer id;
 

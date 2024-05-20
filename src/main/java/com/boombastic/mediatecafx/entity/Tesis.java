@@ -3,9 +3,12 @@ package com.boombastic.mediatecafx.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tesis")
-public class Tesi {
+@Table(name = "tesis", indexes = {
+        @Index(name = "ID_Documento", columnList = "idDocumento")
+})
+public class Tesis {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTesis", nullable = false)
     private Integer id;
 

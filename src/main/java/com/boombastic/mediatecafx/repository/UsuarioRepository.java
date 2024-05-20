@@ -4,6 +4,8 @@ import com.boombastic.mediatecafx.entity.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
+import org.hibernate.usertype.UserType;
 
 import java.util.List;
 
@@ -15,6 +17,14 @@ public class UsuarioRepository {
     public UsuarioRepository() {
         emf = Persistence.createEntityManagerFactory("default");
         this.em = this.emf.createEntityManager();
+    }
+
+    public List<String> findAllUsers() {
+        em.getTransaction().begin();
+
+        Query query = em.createQuery("SELECT u FROM Usuario u");
+        em.getTransaction().commit();
+        return query.getResultList();
     }
 
     public Usuario addUser(Usuario usuario) {
@@ -42,6 +52,13 @@ public class UsuarioRepository {
 
         em.getTransaction().commit();
         return userToChange;
+    }
+
+    public Usuario getUserTypeById(int id) {
+        Usuario usuario = em.createNamedQuery("getUserById", Usuario.class)
+                .setParameter("userId", id)
+                .getSingleResult();
+        return usuario;
     }
 
     public void deleteUser(Usuario usuario) {

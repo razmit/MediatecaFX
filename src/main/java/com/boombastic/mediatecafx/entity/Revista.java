@@ -5,9 +5,12 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "revista")
+@Table(name = "revista", indexes = {
+        @Index(name = "ID_Documento", columnList = "idDocumento")
+})
 public class Revista {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idRevista", nullable = false)
     private Integer id;
 

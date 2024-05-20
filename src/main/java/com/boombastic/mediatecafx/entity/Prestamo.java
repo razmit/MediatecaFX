@@ -7,9 +7,13 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "prestamos")
+@Table(name = "prestamos", indexes = {
+        @Index(name = "ID_Usuario", columnList = "idUsuario"),
+        @Index(name = "ID_Documento", columnList = "idDocumento")
+})
 public class Prestamo {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idPrestamo", nullable = false)
     private Integer id;
 

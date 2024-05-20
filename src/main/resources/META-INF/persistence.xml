@@ -14,7 +14,7 @@
         <class>com.boombastic.mediatecafx.entity.Materiasdocumento</class>
         <class>com.boombastic.mediatecafx.entity.Prestamo</class>
         <class>com.boombastic.mediatecafx.entity.Revista</class>
-        <class>com.boombastic.mediatecafx.entity.Tesi</class>
+        <class>com.boombastic.mediatecafx.entity.Tesis</class>
         <class>com.boombastic.mediatecafx.entity.Tipodocumento</class>
         <class>com.boombastic.mediatecafx.entity.Usuario</class>
 
@@ -25,6 +25,7 @@
             <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
         </properties>
     </persistence-unit>
 </persistence>
