@@ -15,11 +15,21 @@ public class Usuario {
     @Column(name = "apellido", length = 50)
     private String apellido;
 
+    @Lob
     @Column(name = "tipoUsuario")
     private String tipoUsuario;
 
-    @Column(name = "`contraseña`", length = 100)
-    private String contraseña;
+    @Column(name = "contrasena", length = 100)
+    private String contrasena;
+
+    @Column(name = "cantidadMora", nullable = false)
+    private Integer cantidadMora;
+
+    @Column(name = "tiempoMora", nullable = false)
+    private Integer tiempoMora;
+
+    @Column(name = "codigoUsuario", nullable = false, length = 100)
+    private String codigoUsuario;
 
     public Integer getId() {
         return id;
@@ -53,12 +63,36 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public Integer getCantidadMora() {
+        return cantidadMora;
+    }
+
+    public void setCantidadMora(Integer cantidadMora) {
+        this.cantidadMora = cantidadMora;
+    }
+
+    public Integer getTiempoMora() {
+        return tiempoMora;
+    }
+
+    public void setTiempoMora(Integer tiempoMora) {
+        this.tiempoMora = tiempoMora;
+    }
+
+    public String getCodigoUsuario() {
+        return codigoUsuario;
+    }
+
+    public void setCodigoUsuario(String codigoUsuario) {
+        this.codigoUsuario = codigoUsuario;
     }
 
 }

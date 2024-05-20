@@ -9,7 +9,6 @@ import java.time.LocalDate;
 @Table(name = "documentos")
 public class Documento {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idDocumento", nullable = false)
     private Integer id;
 
