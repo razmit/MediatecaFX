@@ -1,6 +1,7 @@
 package com.boombastic.mediatecafx;
 
 import com.boombastic.mediatecafx.entity.Usuario;
+import com.boombastic.mediatecafx.repository.UsuarioRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -24,30 +25,20 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction entityTransaction  = entityManager.getTransaction();
+        Usuario usuario = new Usuario();
+        usuario.setId(2);  // Ingresen una ID random mayor a 2
+        usuario.setNombre("Bob");
+        usuario.setApellido("Bobby");
+        usuario.setContrasena("Maafaka");
+        usuario.setTipoUsuario("Alumno");
+        usuario.setTiempoMora(0);
+        usuario.setCodigoUsuario("AM2002as");
+        usuario.setCantidadMora(0);
 
-        try {
-            entityTransaction.begin();
-
-            Usuario usuario = new Usuario();
-            usuario.setId(1);
-            usuario.setNombre("Jimmy");
-            usuario.setApellido("Space");
-            usuario.setTipoUsuario("Administrador");
-            usuario.setContraseña("Pepe");
-            entityManager.persist(usuario);
-
-            entityTransaction.commit();
-        } finally {
-            if (entityTransaction.isActive()) {
-                entityTransaction.rollback();
-            }
-
-            entityManager.close();
-            entityManagerFactory.close();
-        }
+        UsuarioRepository repository = new UsuarioRepository();
+        repository.addUser(usuario);
+        System.out.println(usuario.toString());
         launch();
     }
 }
+
