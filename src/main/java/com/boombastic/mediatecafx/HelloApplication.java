@@ -1,11 +1,9 @@
 package com.boombastic.mediatecafx;
 
 import com.boombastic.mediatecafx.controllers.LoginController;
-import com.boombastic.mediatecafx.entity.Cdaudio;
-import com.boombastic.mediatecafx.entity.Documento;
-import com.boombastic.mediatecafx.entity.Tipodocumento;
-import com.boombastic.mediatecafx.entity.Usuario;
+import com.boombastic.mediatecafx.entity.*;
 import com.boombastic.mediatecafx.repository.DocumentoRepository;
+import com.boombastic.mediatecafx.repository.PrestamoRepository;
 import com.boombastic.mediatecafx.repository.UsuarioRepository;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -47,15 +45,26 @@ public class HelloApplication extends Application {
         DocumentoRepository documentoRepository = new DocumentoRepository();
 
         // Docs repository
-        List<Documento> listaDocs = documentoRepository.findAllDocs();
-//        listaDocs.stream().forEach(documento -> System.out.println(documento.getTitulo()));
-        for (Documento documento : listaDocs) {
-            System.out.println("Titulo doc: " + documento.getTitulo());
-            Tipodocumento tipodocumento = documento.getIdTipoDocumento();
-            System.out.println("TipoDocumento: " + tipodocumento.getNombreTipo());
+//        List<Documento> listaDocs = documentoRepository.findAllDocs();
+////        listaDocs.stream().forEach(documento -> System.out.println(documento.getTitulo()));
+//        for (Documento documento : listaDocs) {
+//            System.out.println("Titulo doc: " + documento.getTitulo());
+//            Tipodocumento tipodocumento = documento.getIdTipoDocumento();
+//            System.out.println("TipoDocumento: " + tipodocumento.getNombreTipo());
+//
+//            List<Cdaudio> cdaudioList = documento.getCdaudioList();
+//            cdaudioList.stream().forEach(cdaudio -> System.out.println("CD audio: "  + cdaudio.getArtista()));
+//        }
 
-            List<Cdaudio> cdaudioList = documento.getCdaudioList();
-            cdaudioList.stream().forEach(cdaudio -> System.out.println("CD audio: "  + cdaudio.getArtista()));
+
+        // Prestamo repo
+        PrestamoRepository prestamoRepository = new PrestamoRepository();
+
+        List<Prestamo> prestamoList = prestamoRepository.findAllPrestamos();
+        for (Prestamo prestamo : prestamoList) {
+            System.out.println("Estado prestamo: " + prestamo.getEstado());
+            Documento doc = prestamo.getIdDocumento();
+            System.out.println("El documento es: " + doc.getTitulo());
         }
 //        repository.addUser(usuario);
 //        System.out.println(usuario.toString());

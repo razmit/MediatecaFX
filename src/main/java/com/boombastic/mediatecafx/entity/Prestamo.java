@@ -63,6 +63,17 @@ import java.util.List;
                 "LEFT JOIN FETCH doc.dvdList dvd " +
                 "LEFT JOIN FETCH doc.tesisList tesis " +
                 "WHERE tp.nombreTipo = :tipoDoc") // Consigue prestamos basados en tipoDoc
+@NamedQuery(name = "getAllInfoPrestamoAndAssociationsByEstado", query =
+        "SELECT pres FROM Prestamo pres " +
+                "JOIN FETCH pres.idDocumento doc " +
+                "LEFT JOIN FETCH doc.idTipoDocumento tp " +
+                "LEFT JOIN FETCH doc.cdaudioList cda " +
+                "LEFT JOIN FETCH doc.libroList libro " +
+                "LEFT JOIN FETCH doc.revistaList revista " +
+                "LEFT JOIN FETCH doc.dvdList dvd " +
+                "LEFT JOIN FETCH doc.tesisList tesis " +
+                "WHERE pres.estado = :estadoPrestamo") // Basado en estado prestamo
+
 //@NamedQuery(name = "updatePrestamo", query = "update Prestamo pres SET pres.fechaPrestamo = :newArtista, pres.duracion = :newDuracion, " +
 //        "pres.genero = :newGenero, pres.numCanciones = :newNumCancion where id = :presId")
 @NamedQuery(name = "deletePrestamo", query = "delete Prestamo pres where id = :presId")
