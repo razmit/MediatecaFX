@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tipodocumento")
+@NamedQuery(name = "getAllTipoDocs", query = "select tp from Tipodocumento tp")
+@NamedQuery(name = "getTPById", query = "select tp from Tipodocumento tp where id =:tpId")
+@NamedQuery(name = "updateTP", query = "update Tipodocumento tp SET tp.nombreTipo = :newNombreTipo " +
+        "where id = :tpId")
+@NamedQuery(name = "deleteTP", query = "delete Tipodocumento tp where id = :tpId")
 public class Tipodocumento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

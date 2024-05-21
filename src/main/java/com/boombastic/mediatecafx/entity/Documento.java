@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Table(name = "documentos", indexes = {
         @Index(name = "ID_Tipo_Documento", columnList = "idTipoDocumento")
 })
+@NamedQuery(name = "getAllDocs", query = "select doc, td.nombreTipo AS tipoDocumento from Documento doc join doc.idTipoDocumento td")
 public class Documento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

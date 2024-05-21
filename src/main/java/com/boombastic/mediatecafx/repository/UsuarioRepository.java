@@ -5,7 +5,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
-import org.hibernate.usertype.UserType;
 
 import java.util.List;
 
@@ -19,10 +18,10 @@ public class UsuarioRepository {
         this.em = this.emf.createEntityManager();
     }
 
-    public List<String> findAllUsers() {
+    public List<Usuario> findAllUsers() {
         em.getTransaction().begin();
 
-        Query query = em.createQuery("SELECT u FROM Usuario u");
+        Query query = em.createNamedQuery("getAllUsers");
         em.getTransaction().commit();
         return query.getResultList();
     }
@@ -38,23 +37,45 @@ public class UsuarioRepository {
         return em.find(Usuario.class, id);
     }
 
-    public Usuario updateUser(Usuario usuario) {
-        Usuario userToChange = em.find(Usuario.class, usuario.getId());
+    public boolean updateUser(int id) {
+        boolean successful = false;
         em.getTransaction().begin();
 
-        userToChange.setNombre(usuario.getNombre());
-        userToChange.setApellido(usuario.getApellido());
-        userToChange.setContrasena(usuario.getContrasena());
-        userToChange.setTipoUsuario(usuario.getTipoUsuario());
-        userToChange.setCodigoUsuario(usuario.getCodigoUsuario());
-        userToChange.setCantidadMora(usuario.getCantidadMora());
-        userToChange.setTiempoMora(userToChange.getTiempoMora());
+        Query updateQuery  = em.createNamedQuery("updateUser");
+
+        updateQuery.setParameter("newNombre", "Juan");
+        updateQuery.setParameter("newApellido", "Lopez");
+        updateQuery.setParameter("newTipoUsuario", "Administrador");
+        updateQuery.setParameter("newContrasena", "PepeLives");
+        updateQuery.setParameter("newCantidadMora", 56);
+        updateQuery.setParameter("newTiempoMora", 78);
+        updateQuery.setParameter("newCodigo", "AM202020");
+        updateQuery.setParameter("usuarioToUpdate", id);
+
+        int updatedEntities = updateQuery.executeUpdate();
 
         em.getTransaction().commit();
-        return userToChange;
+        em.clear();
+        if (updatedEntities > 0) {
+            successful = true;
+        } else {
+            System.out.println("No user found with ID: " + id);
+        }
+
+        return successful;
     }
 
-    public Usuario getUserTypeById(int id) {
+    public void deleteUser(int id) {
+        em.getTransaction().begin();
+
+        Query deleteQuery = em.createNamedQuery("deleteUser");
+        deleteQuery.setParameter("usuarioId", id);
+        deleteQuery.executeUpdate();
+
+        em.getTransaction().commit();
+    }
+
+    public Usuario findUserbyId(int id) {
         Usuario usuario = em.createNamedQuery("getUserById", Usuario.class)
                 .setParameter("userId", id)
                 .getSingleResult();

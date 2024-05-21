@@ -9,6 +9,11 @@ import java.util.Set;
 @Table(name = "usuarios")
 @NamedQuery(name = "getAllUsers", query = "select u FROM Usuario u")
 @NamedQuery(name = "getUserById", query = "select u from Usuario u WHERE u.id = :userId")
+@NamedQuery(name = "updateUser", query = "update Usuario u SET u.nombre = :newNombre," +
+        "u.apellido =:newApellido, u.tipoUsuario = :newTipoUsuario, u.contrasena = :newContrasena," +
+        "u.cantidadMora =:newCantidadMora, u.tiempoMora =:newTiempoMora, u.codigoUsuario =:newCodigo " +
+        "WHERE u.id = :usuarioToUpdate")
+@NamedQuery(name = "deleteUser", query = "delete Usuario u where u.id = :usuarioId")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
