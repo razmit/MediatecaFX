@@ -8,6 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "usuarios")
 @NamedQuery(name = "getAllUsers", query = "select u FROM Usuario u")
+@NamedQuery(name = "getUserByName", query = "select u FROM Usuario u where u.nombre = :nombreUser")
 @NamedQuery(name = "getUserById", query = "select u from Usuario u WHERE u.id = :userId")
 @NamedQuery(name = "updateUser", query = "update Usuario u SET u.nombre = :newNombre," +
         "u.apellido =:newApellido, u.tipoUsuario = :newTipoUsuario, u.contrasena = :newContrasena," +

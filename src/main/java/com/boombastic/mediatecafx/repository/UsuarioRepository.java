@@ -82,6 +82,20 @@ public class UsuarioRepository {
         return usuario;
     }
 
+    public Usuario findUserForLogin(String nombre, String contra) {
+
+        Query query = em.createNamedQuery("getUserByName", Usuario.class);
+        query.setParameter("nombreUser", nombre);
+
+        Usuario usuarioLogueando = (Usuario) query.getSingleResult();
+
+        if (usuarioLogueando != null && contra.equals(usuarioLogueando.getContrasena())) {
+
+            return usuarioLogueando;
+        } else
+            return null;
+    }
+
     public void deleteUser(Usuario usuario) {
         em.getTransaction().begin();
         em.remove(usuario);

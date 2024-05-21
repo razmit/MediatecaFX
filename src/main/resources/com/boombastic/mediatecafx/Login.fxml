@@ -6,19 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity"
-      maxWidth="-Infinity"
-      minHeight="-Infinity"
-      minWidth="-Infinity"
-      prefHeight="503.0"
-      prefWidth="854.0"
-      xmlns="http://javafx.com/javafx/17.0.2-ea"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.boombastic.mediatecafx.controllers.Login">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boombastic.mediatecafx.controllers.LoginController">
    <children>
       <VBox prefHeight="200.0" prefWidth="427.0">
          <children>
-            <Label text="Inicio de Sesion">
+            <Label text="Inicio de Sesión">
                <font>
                   <Font size="32.0" />
                </font>
@@ -36,7 +28,7 @@
                   <TextField fx:id="txtUser">
 <!--                             onKeyTyped="#eventKey">-->
                      <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                      </font>
                   </TextField>
                   <Label text="Contraseña:">
@@ -47,20 +39,17 @@
                   <PasswordField fx:id="txtPassword">
 <!--                                 onKeyTyped="#eventKey"> ESTO ES PARTE DEL PASSWORD FIELD-->
                      <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                      </font>
                   </PasswordField>
-                  <Button fx:id="btnLogin"
-                          maxWidth="1.7976931348623157E308"
-                          mnemonicParsing="false"
-                          text="Ingresar">
-<!--                          onAction="#eventAction" ESTO VA ARRIBA, DENTRO DE BUTTON-->
+                  <Button fx:id="btnLogin" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loginValidationBtnPressed" text="Ingresar">
+
 
                      <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="20.0"/>
+                        <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
                </children>

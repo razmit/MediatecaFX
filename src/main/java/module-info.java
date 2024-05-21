@@ -9,6 +9,7 @@ module com.boombastic.mediatecafx {
     requires org.kordamp.bootstrapfx.core;
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
+    requires jdk.compiler;
 
     opens com.boombastic.mediatecafx to javafx.fxml;
     opens com.boombastic.mediatecafx.entity to org.hibernate.orm.core;
