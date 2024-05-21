@@ -1,7 +1,11 @@
 package com.boombastic.mediatecafx;
 
 import com.boombastic.mediatecafx.controllers.LoginController;
+import com.boombastic.mediatecafx.entity.Cdaudio;
+import com.boombastic.mediatecafx.entity.Documento;
+import com.boombastic.mediatecafx.entity.Tipodocumento;
 import com.boombastic.mediatecafx.entity.Usuario;
+import com.boombastic.mediatecafx.repository.DocumentoRepository;
 import com.boombastic.mediatecafx.repository.UsuarioRepository;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +32,7 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
+        // Add user
         Usuario usuario = new Usuario();
         usuario.setNombre("Pepe1");
         usuario.setApellido("Lol");
@@ -37,13 +42,27 @@ public class HelloApplication extends Application {
         usuario.setCodigoUsuario("AM2002as");
         usuario.setCantidadMora(0);
 
+        // User repository
         UsuarioRepository repository = new UsuarioRepository();
+        DocumentoRepository documentoRepository = new DocumentoRepository();
+
+        // Docs repository
+        List<Documento> listaDocs = documentoRepository.findAllDocs();
+//        listaDocs.stream().forEach(documento -> System.out.println(documento.getTitulo()));
+        for (Documento documento : listaDocs) {
+            System.out.println("Titulo doc: " + documento.getTitulo());
+            Tipodocumento tipodocumento = documento.getIdTipoDocumento();
+            System.out.println("TipoDocumento: " + tipodocumento.getNombreTipo());
+
+            List<Cdaudio> cdaudioList = documento.getCdaudioList();
+            cdaudioList.stream().forEach(cdaudio -> System.out.println("CD audio: "  + cdaudio.getArtista()));
+        }
 //        repository.addUser(usuario);
 //        System.out.println(usuario.toString());
 
-        List<Usuario> results = repository.findAllUsers();
-        results.stream().forEach(usu -> System.out.println(usu.getNombre()));
-        System.out.println("Results: "+results.toString());
+//        List<Usuario> results = repository.findAllUsers();
+//        results.stream().forEach(usu -> System.out.println(usu.getNombre()));
+//        System.out.println("Results: "+results.toString());
 
 //        Usuario tipoUsuario = repository.findUserbyId(6);
 //        System.out.println("Tipo usuario: "+tipoUsuario.getTipoUsuario().toString());

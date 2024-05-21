@@ -8,6 +8,11 @@ import java.time.LocalDate;
 @Table(name = "revista", indexes = {
         @Index(name = "ID_Documento", columnList = "idDocumento")
 })
+@NamedQuery(name = "getAllInfoRev", query = "select rev from Revista rev join fetch rev.idDocumento doc")
+@NamedQuery(name = "getRevById", query = "select rev from Revista rev join fetch rev.idDocumento doc where rev.id = :cdId")
+@NamedQuery(name = "updateRev", query = "update Revista rev SET rev.editorial = :newEditorial, rev.issn = :newIssn, " +
+        "rev.periodicidad = :newPeriodicidad, rev.fechaPublicacion = :newFechaPublic where id = :revId")
+@NamedQuery(name = "deleteRev", query = "delete Revista rev where id = :revId")
 public class Revista {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

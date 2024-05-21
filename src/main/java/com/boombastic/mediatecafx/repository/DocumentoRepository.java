@@ -19,15 +19,15 @@ public class DocumentoRepository {
         this.em = this.emf.createEntityManager();
     }
 
-    public List<Documento> findAllTP() {
+    public List<Documento> findAllDocs() {
         em.getTransaction().begin();
 
-        Query query = em.createNamedQuery("getAllTipoDocs", Documento.class);
+        Query query = em.createNamedQuery("getAllDocs", Documento.class);
         em.getTransaction().commit();
-        return query.getResultList();
+        return (List<Documento>) query.getResultList();
     }
 
-    public Documento addTP(Documento documento) {
+    public Documento addDoc(Documento documento) {
         em.getTransaction().begin();
         em.persist(documento);
         em.getTransaction().commit();
@@ -38,7 +38,7 @@ public class DocumentoRepository {
         return em.find(Documento.class, id);
     }
 
-    public boolean updateTP(int id, String nombreTipo) {
+    public boolean updateDoc(int id, String nombreTipo) {
         boolean successful = false;
         em.getTransaction().begin();
 
@@ -60,7 +60,7 @@ public class DocumentoRepository {
         return successful;
     }
 
-    public void deleteTP(int id) {
+    public void deleteDoc(int id) {
         em.getTransaction().begin();
 
         Query deleteQuery = em.createNamedQuery("deleteTP");
@@ -70,16 +70,16 @@ public class DocumentoRepository {
         em.getTransaction().commit();
     }
 
-    public Materiasdocumento findMDbyId(int id) {
+    public Materiasdocumento findDocbyId(int id) {
         Materiasdocumento md = em.createNamedQuery("getMDById", Materiasdocumento.class)
                 .setParameter("mdID", id)
                 .getSingleResult();
         return md;
     }
 
-    public void deleteUser(Materiasdocumento md) {
+    public void deleteDoc(Documento doc) {
         em.getTransaction().begin();
-        em.remove(md);
+        em.remove(doc);
         em.getTransaction().commit();
     }
 

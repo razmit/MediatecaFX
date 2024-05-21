@@ -11,6 +11,11 @@ import java.time.LocalDate;
         @Index(name = "ID_Usuario", columnList = "idUsuario"),
         @Index(name = "ID_Documento", columnList = "idDocumento")
 })
+@NamedQuery(name = "getAllInfoPrestamoAndAssociations", query = "select pres FROM Prestamo pres JOIN FETCH pres.idDocumento")
+//@NamedQuery(name = "getPrestamoById", query = "select pres from Prestamo pres join fetch pres.idDocumento doc where pres.id = :presId")
+//@NamedQuery(name = "updateprestamo", query = "update Prestamo pres SET pres.fechaPrestamo = :newArtista, pres.duracion = :newDuracion, " +
+//        "pres.genero = :newGenero, pres.numCanciones = :newNumCancion where id = :presId")
+@NamedQuery(name = "deletePrestamo", query = "delete Prestamo pres where id = :presId")
 public class Prestamo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

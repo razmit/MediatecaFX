@@ -4,13 +4,37 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "documentos", indexes = {
         @Index(name = "ID_Tipo_Documento", columnList = "idTipoDocumento")
 })
-@NamedQuery(name = "getAllDocs", query = "select doc, td.nombreTipo AS tipoDocumento from Documento doc join doc.idTipoDocumento td")
+@NamedQuery(name = "getAllDocs", query = "select doc from Documento doc join fetch doc.idTipoDocumento td")
+@NamedQuery(name = "findAllUsesOfDocs", query = "SELECT doc FROM Documento doc " +
+        "JOIN FETCH doc.idTipoDocumento tp " +
+        "LEFT JOIN FETCH doc.cdaudioList cda " +
+        "LEFT JOIN FETCH doc.libroList libro " +
+        "LEFT JOIN FETCH doc.revistaList revista " +
+        "LEFT JOIN FETCH doc.dvdList dvd " +
+        "LEFT JOIN FETCH doc.tesisList tesis " +
+        "LEFT JOIN FETCH doc.prestamoList presta")
+//@NamedQuery(name = "updateDoc", query = "SET")
 public class Documento {
+
+    @OneToMany(mappedBy = "idDocumento")
+    private List<Cdaudio> cdaudioList;
+    @OneToMany(mappedBy = "idDocumento")
+    private List<Dvd> dvdList;
+    @OneToMany(mappedBy = "idDocumento")
+    private List<Libro> libroList;
+    @OneToMany(mappedBy = "idDocumento")
+    private List<Tesis> tesisList;
+    @OneToMany(mappedBy = "idDocumento")
+    private List<Revista> revistaList;
+    @OneToMany(mappedBy = "idDocumento")
+    private List<Prestamo> prestamoList;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idDocumento", nullable = false)
@@ -35,8 +59,6 @@ public class Documento {
     @Column(name = "cantidadDisponible", nullable = false)
     private Integer cantidadDisponible;
 
-    @ColumnDefault("'Disponible'")
-    @Lob
     @Column(name = "estado")
     private String estado;
 
@@ -115,4 +137,43 @@ public class Documento {
         this.fechaAdquisicion = fechaAdquisicion;
     }
 
+    public List<Cdaudio> getCdaudioList() {
+        return cdaudioList;
+    }
+
+    public void setCdaudioList(List<Cdaudio> cdaudioList) {
+        this.cdaudioList = cdaudioList;
+    }
+
+    public List<Dvd> getDvdList() {
+        return dvdList;
+    }
+
+    public void setDvdList(List<Dvd> dvdList) {
+        this.dvdList = dvdList;
+    }
+
+    public List<Libro> getLibroList() {
+        return libroList;
+    }
+
+    public void setLibroList(List<Libro> libroList) {
+        this.libroList = libroList;
+    }
+
+    public List<Tesis> getTesisList() {
+        return tesisList;
+    }
+
+    public void setTesisList(List<Tesis> tesisList) {
+        this.tesisList = tesisList;
+    }
+
+    public List<Revista> getRevistaList() {
+        return revistaList;
+    }
+
+    public void setRevistaList(List<Revista> revistaList) {
+        this.revistaList = revistaList;
+    }
 }

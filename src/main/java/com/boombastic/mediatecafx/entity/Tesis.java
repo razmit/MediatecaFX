@@ -6,6 +6,11 @@ import jakarta.persistence.*;
 @Table(name = "tesis", indexes = {
         @Index(name = "ID_Documento", columnList = "idDocumento")
 })
+@NamedQuery(name = "getAllInfoTes", query = "select tes from Tesis tes join fetch tes.idDocumento doc")
+@NamedQuery(name = "getCDByTes", query = "select tes from Tesis tes join fetch tes.idDocumento doc where tes.id = :tesId")
+@NamedQuery(name = "updateTes", query = "update Tesis tes SET tes.departamento = :newDept, tes.directorTesis = :newDirectorTes, " +
+        "tes.gradoObtenido = :newGradoObt where id = :tesId")
+@NamedQuery(name = "deleteTes", query = "delete Tesis cd where id = :tesId")
 public class Tesis {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
