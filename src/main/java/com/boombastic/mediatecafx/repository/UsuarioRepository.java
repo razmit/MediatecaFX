@@ -43,7 +43,7 @@ public class UsuarioRepository {
 
         Query updateQuery  = em.createNamedQuery("updateUser");
 
-        updateQuery.setParameter("newNombre", "Juan");
+        updateQuery.setParameter("newNombre", "Pepe");
         updateQuery.setParameter("newApellido", "Lopez");
         updateQuery.setParameter("newTipoUsuario", "Administrador");
         updateQuery.setParameter("newContrasena", "PepeLives");
@@ -59,7 +59,7 @@ public class UsuarioRepository {
         if (updatedEntities > 0) {
             successful = true;
         } else {
-            System.out.println("No user found with ID: " + id);
+            System.out.println("No hay usuario con la ID: " + id);
         }
 
         return successful;

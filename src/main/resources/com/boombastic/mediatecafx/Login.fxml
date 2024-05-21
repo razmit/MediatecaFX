@@ -6,7 +6,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boombastic.mediatecafx.controllers.LoginController">
+<HBox maxHeight="-Infinity"
+      maxWidth="-Infinity"
+      minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="503.0"
+      prefWidth="854.0"
+      xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:id="loginBox">
    <children>
       <VBox prefHeight="200.0" prefWidth="427.0">
          <children>
@@ -25,23 +33,23 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtUser">
-<!--                             onKeyTyped="#eventKey">-->
+                  <TextField fx:id="usernameTxt">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
+                   <Label fx:id="usernameErrorLabel" text="El nombre no puede estar vacío" visible="false" />
                   <Label text="Contraseña:">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="txtPassword">
-<!--                                 onKeyTyped="#eventKey"> ESTO ES PARTE DEL PASSWORD FIELD-->
+                  <PasswordField fx:id="passwordTxt">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </PasswordField>
+                   <Label fx:id="passwordErrorLabel" text="La contraseña no puede estar vacía" visible="false" />
                   <Button fx:id="btnLogin" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loginValidationBtnPressed" text="Ingresar">
 
 

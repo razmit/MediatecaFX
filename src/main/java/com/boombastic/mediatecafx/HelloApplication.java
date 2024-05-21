@@ -1,5 +1,6 @@
 package com.boombastic.mediatecafx;
 
+import com.boombastic.mediatecafx.controllers.LoginController;
 import com.boombastic.mediatecafx.entity.Usuario;
 import com.boombastic.mediatecafx.repository.UsuarioRepository;
 import javafx.application.Application;
@@ -15,16 +16,20 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
-        Scene scene = fxmlLoader.load();
-        stage.setTitle("Login!");
+        fxmlLoader.setController(new LoginController());
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("MediatecaFX");
         stage.setScene(scene);
         stage.show();
+        LoginController loginController = (LoginController) fxmlLoader.getController(); // Get the controller instance from the loader
+        loginController.initialize(); // Call initialize on the controller
+
     }
 
     public static void main(String[] args) {
 
         Usuario usuario = new Usuario();
-        usuario.setNombre("asdaswwwwwwww");
+        usuario.setNombre("Pepe1");
         usuario.setApellido("Lol");
         usuario.setContrasena("OhYe");
         usuario.setTipoUsuario("Docente");
@@ -40,8 +45,8 @@ public class HelloApplication extends Application {
         results.stream().forEach(usu -> System.out.println(usu.getNombre()));
         System.out.println("Results: "+results.toString());
 
-        Usuario tipoUsuario = repository.findUserbyId(6);
-        System.out.println("Tipo usuario: "+tipoUsuario.getTipoUsuario().toString());
+//        Usuario tipoUsuario = repository.findUserbyId(6);
+//        System.out.println("Tipo usuario: "+tipoUsuario.getTipoUsuario().toString());
 
 //        boolean successful = repository.updateUser(3);
 //        repository.deleteUser(4);
