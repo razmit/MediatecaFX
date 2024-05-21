@@ -45,7 +45,7 @@ public class DocumentoRepository {
         Query updateQuery  = em.createNamedQuery("updateTP");
 
         updateQuery.setParameter("newNombreTipo", nombreTipo);
-        updateQuery.setParameter("documentoId", id);
+//        updateQuery.setParameter("documentoId", id);
 
         int updatedEntities = updateQuery.executeUpdate();
 
@@ -64,7 +64,7 @@ public class DocumentoRepository {
         em.getTransaction().begin();
 
         Query deleteQuery = em.createNamedQuery("deleteTP");
-        deleteQuery.setParameter("documentoId", id);
+//        deleteQuery.setParameter("documentoId", id);
         deleteQuery.executeUpdate();
 
         em.getTransaction().commit();
