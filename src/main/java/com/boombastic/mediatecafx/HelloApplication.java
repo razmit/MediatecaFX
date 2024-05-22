@@ -44,6 +44,8 @@ public class HelloApplication extends Application {
         UsuarioRepository repository = new UsuarioRepository();
         DocumentoRepository documentoRepository = new DocumentoRepository();
 
+        Usuario newUser = repository.addUser(usuario);
+
         // Docs repository
 //        List<Documento> listaDocs = documentoRepository.findAllDocs();
 ////        listaDocs.stream().forEach(documento -> System.out.println(documento.getTitulo()));
@@ -57,24 +59,24 @@ public class HelloApplication extends Application {
 //        }
 
 
-        // Prestamo repo
-        PrestamoRepository prestamoRepository = new PrestamoRepository();
-
-        List<Prestamo> prestamoList = prestamoRepository.findAllPrestamos();
-        for (Prestamo prestamo : prestamoList) {
-            System.out.println("Estado prestamo: " + prestamo.getEstado());
-            Documento doc = prestamo.getIdDocumento();
-            System.out.println("El documento es: " + doc.getTitulo());
-        }
+//        // Prestamo repo
+//        PrestamoRepository prestamoRepository = new PrestamoRepository();
+//
+//        List<Prestamo> prestamoList = prestamoRepository.findAllPrestamos();
+//        for (Prestamo prestamo : prestamoList) {
+//            System.out.println("Estado prestamo: " + prestamo.getEstado());
+//            Documento doc = prestamo.getIdDocumento();
+//            System.out.println("El documento es: " + doc.getTitulo());
+//        }
 //        repository.addUser(usuario);
 //        System.out.println(usuario.toString());
 
-//        List<Usuario> results = repository.findAllUsers();
-//        results.stream().forEach(usu -> System.out.println(usu.getNombre()));
-//        System.out.println("Results: "+results.toString());
+        List<Usuario> results = repository.findAllUsers();
+        results.stream().forEach(usu -> System.out.println(usu.getNombre()));
+        System.out.println("Results: "+results.toString());
 
-//        Usuario tipoUsuario = repository.findUserbyId(6);
-//        System.out.println("Tipo usuario: "+tipoUsuario.getTipoUsuario().toString());
+        Usuario tipoUsuario = repository.findUserbyId(2);
+        System.out.println("Tipo usuario: "+tipoUsuario.getTipoUsuario().toString());
 
 //        boolean successful = repository.updateUser(3);
 //        repository.deleteUser(4);

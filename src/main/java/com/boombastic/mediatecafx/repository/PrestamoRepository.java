@@ -19,13 +19,13 @@ public class PrestamoRepository {
         this.em = this.emf.createEntityManager();
     }
 
-    public List<Prestamo> findAllPrestamos() {
-        em.getTransaction().begin();
-
-        Query query = em.createNamedQuery("getAllInfoPrestamoAndAssociations", Prestamo.class);
-        em.getTransaction().commit();
-        return (List<Prestamo>) query.getResultList();
-    }
+//    public List<Prestamo> findAllPrestamos() {
+//        em.getTransaction().begin();
+//
+//        Query query = em.createNamedQuery("getAllInfoPrestamoAndAssociations", Prestamo.class);
+//        em.getTransaction().commit();
+//        return (List<Prestamo>) query.getResultList();
+//    }
 
     public Prestamo addDoc(Prestamo documento) {
         em.getTransaction().begin();

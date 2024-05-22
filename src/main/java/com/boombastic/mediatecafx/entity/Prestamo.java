@@ -79,16 +79,6 @@ import java.util.List;
 @NamedQuery(name = "deletePrestamo", query = "delete Prestamo pres where id = :presId")
 public class Prestamo {
 
-    @OneToMany(mappedBy = "idDocumento")
-    private List<Cdaudio> cdaudioList;
-    @OneToMany(mappedBy = "idDocumento")
-    private List<Dvd> dvdList;
-    @OneToMany(mappedBy = "idDocumento")
-    private List<Libro> libroList;
-    @OneToMany(mappedBy = "idDocumento")
-    private List<Tesis> tesisList;
-    @OneToMany(mappedBy = "idDocumento")
-    private List<Revista> revistaList;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idPrestamo", nullable = false)
@@ -173,43 +163,4 @@ public class Prestamo {
         this.mora = mora;
     }
 
-    public List<Cdaudio> getCdaudioList() {
-        return cdaudioList;
-    }
-
-    public void setCdaudioList(List<Cdaudio> cdaudioList) {
-        this.cdaudioList = cdaudioList;
-    }
-
-    public List<Dvd> getDvdList() {
-        return dvdList;
-    }
-
-    public void setDvdList(List<Dvd> dvdList) {
-        this.dvdList = dvdList;
-    }
-
-    public List<Libro> getLibroList() {
-        return libroList;
-    }
-
-    public void setLibroList(List<Libro> libroList) {
-        this.libroList = libroList;
-    }
-
-    public List<Tesis> getTesisList() {
-        return tesisList;
-    }
-
-    public void setTesisList(List<Tesis> tesisList) {
-        this.tesisList = tesisList;
-    }
-
-    public List<Revista> getRevistaList() {
-        return revistaList;
-    }
-
-    public void setRevistaList(List<Revista> revistaList) {
-        this.revistaList = revistaList;
-    }
 }
